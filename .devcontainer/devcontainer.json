@@ -1,0 +1,7 @@
+{
+  "name": "NotRe",
+  "build": {
+    "dockerfile": "../docker/Dockerfile",
+    "context": ".."
+  }
+}
