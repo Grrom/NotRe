@@ -1,12 +1,7 @@
 import datetime
 import json
-import os
-from dotenv import load_dotenv
 from flask import Response
 from notion.client import NotionClient
-
-load_dotenv()
-
 
 
 class DateTimeEncoder(json.JSONEncoder):
