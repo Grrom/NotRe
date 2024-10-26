@@ -24,9 +24,7 @@ def read_notion_view(request):
     if auth is None or auth == "":
         raise ValueError("Authorization header is required")
 
-
     client = NotionClient(auth)
-
 
     request_json = json.loads(request.data)
 
@@ -49,7 +47,8 @@ def read_notion_view(request):
     res: list[dict] = []
 
     for row in cv.collection.get_rows():
-        res.append(row.get_all_properties())
+        mapped_children = list(map(lambda x: getattr(x, "title", ""), row.children))
+        res.append({"children": mapped_children, **row.get_all_properties()})
 
     return Response(
         json.dumps(res, cls=DateTimeEncoder), status=200, mimetype="application/json"
