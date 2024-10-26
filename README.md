@@ -1,5 +1,5 @@
-It's a cloud function for reading stuff in notion
+It's a cloud function for reading notion views
 
-Input: database_id, view_id
+Input: organization, database_id, view_id
 
-output: jsonds
+output: json of contents of pages in the view

@@ -1,2 +1,4 @@
 python-dotenv
 requests
+flask
+git+https://github.com/jamalex/notion-py@c3c9c251484f78102d93048719a31005c91217cd

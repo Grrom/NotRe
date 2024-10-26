@@ -1,16 +1,27 @@
 import json
-from urllib.request import Request
+import os
+
+from requests import Request
 
 from dotenv import load_dotenv
-from function import do_something
+
+from function import read_notion_view
+
 
 load_dotenv()
 
+test_body = {
+    "organization": os.getenv("TEST_NOTION_ORGANIZATION"),
+    "database-id": os.getenv("TEST_NOTION_DATABASE_ID"),
+    "view-id": os.getenv("TEST_NOTION_VIEW_ID"),
+}
+
 request = Request(
     method="POST",
-    url="http://testinglang.com",
+    url="https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     headers={"Content-Type": "application/json"},
-    data=json.dumps({"data": "hello-world"}),
+    data=json.dumps(test_body),
 )
 
-do_something(request)
+
+read_notion_view(request)

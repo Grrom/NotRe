@@ -2,7 +2,7 @@
 FROM python:3.8-slim
 
 # Install Git
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y git gcc
 
 # Set the working directory in the container
 WORKDIR /app
@@ -21,4 +21,4 @@ COPY ../ ../
 
 
 # Set the command to run the application
-CMD [ "python", "app.py" ]
+CMD [ "python", "run.py" ]
