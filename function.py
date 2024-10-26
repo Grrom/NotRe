@@ -7,7 +7,6 @@ from notion.client import NotionClient
 
 load_dotenv()
 
-client = NotionClient(os.getenv("TOKEN_V2"))
 
 
 class DateTimeEncoder(json.JSONEncoder):
@@ -26,6 +25,14 @@ def read_notion_view(request):
         Response object using
         `make_response <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>`.
     """
+    auth = request.headers.get("Authorization")
+    if auth is None or auth == "":
+        raise ValueError("Authorization header is required")
+
+
+    client = NotionClient(auth)
+
+
     request_json = json.loads(request.data)
 
     organization = request_json.get("organization")
