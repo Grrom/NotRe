@@ -19,7 +19,10 @@ test_body = {
 request = Request(
     method="POST",
     url="https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    headers={"Content-Type": "application/json", "Authorization": os.getenv("TEST_TOKEN_V2")}, 
+    headers={
+        "Content-Type": "application/json",
+        "Authorization": os.getenv("TOKEN_V2"),
+    },
     data=json.dumps(test_body),
 )
 

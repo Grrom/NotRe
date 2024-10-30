@@ -1,5 +1,6 @@
 import datetime
 import json
+import os
 from flask import Response
 from notion.client import NotionClient
 
@@ -20,11 +21,7 @@ def read_notion_view(request):
         Response object using
         `make_response <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>`.
     """
-    auth = request.headers.get("Authorization")
-    if auth is None or auth == "":
-        raise ValueError("Authorization header is required")
-
-    client = NotionClient(auth)
+    client = NotionClient(os.getenv("TOKEN_V2"))
 
     request_json = json.loads(request.data)
 
